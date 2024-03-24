@@ -1,0 +1,125 @@
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End:
+
+% Hardcode the templates directiry
+\documentclass[a4paper,12pt]{article}
+
+% Strech line distances
+% \renewcommand{\baselinestretch}{1.3}
+\usepackage{amsmath}
+\pagestyle{plain}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+  }
+
+% Margins act weird with headers
+\usepackage[
+    %margin=1.5cm,
+    %includehead,includefoot,
+    hmargin=1.5cm,
+    top=2.5cm
+    ]{geometry}
+
+\usepackage{fancyhdr}
+
+% reach maximum nesting
+\usepackage{enumitem}
+\usepackage{longtable}
+
+% Show source code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Plots
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage[localise=on]{xepersian}
+\settextfont{XBZar}[
+  Path = ./template/Zar/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Extension = .ttf,
+] % Fancy fonts, eh?
+
+% Hmmm
+\ExplSyntaxOn
+\cs_set_eq:NN
+\etex_iffontchar:D
+\tex_iffontchar:D
+\cs_undefine:N \c_one
+\int_const:Nn \c_one { 1 }
+\ExplSyntaxOff
+\setmathdigitfont{XBZar}[
+  Path = ./template/Zar/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Extension = .ttf,
+]
+\setdigitfont{XBZar}[
+  Path = ./template/Zar/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Extension = .ttf,
+]
+
+% Change the formatting of `sections`
+%\usepackage{sectsty}
+%\allsectionsfont{\settextfont{Sahel}}
+
+\fancypagestyle{firststyle} {
+  \rhead{\course \\
+
+     نام و نام خانوادگی: \name \\
+    شماره دانشجویی: \studentnumber
+    % آدرس ایمیل: ‌\email
+  }
+
+  \chead{\textbf{\Large \titlename} \\}
+  \lhead{\includegraphics[
+    height=1.3cm]{./template/ferdowsi-logo.png} \\ \today}
+  \headsep 5.5em
+}
+% Put style only on first page
+\thispagestyle{firststyle}
