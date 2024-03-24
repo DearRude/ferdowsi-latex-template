@@ -1,0 +1,1 @@
+# ferdowsi-latex-template
